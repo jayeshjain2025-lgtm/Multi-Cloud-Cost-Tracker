@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AWS Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='chart.js') }}"></script>
+</head>
+<body>
+  <header><h1>AWS Cost Dashboard</h1></header>
+  <section class="metric">
+    <div>Total Bill: <span id="total">—</span></div>
+  </section>
+  <section class="charts">
+    <canvas id="serviceChart"></canvas>
+    <canvas id="dailyChart"></canvas>
+  </section>
+  <script>
+    const endpoint = '/api_aws';
+  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart code -->
+  <script>
+    // Convert the Flask data to JS
+    const dataFromFlask = { data , tojson };
+    const services = dataFromFlask.map(item => item.service);
+    const costs = dataFromFlask.map(item => item.cost);
+
+    // Get canvas context
+    const ctx = document.getElementById('costChart').getContext('2d');
+
+    // Create the chart
+    const costChart = new Chart(ctx, {
+      type: 'bar', // change this to 'pie' for pie chart
+      data: {
+        labels: services,
+        datasets: [{
+          label: 'AWS Cost (USD)',
+          data: costs,
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(54, 162, 235, 0.2)'
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(54, 162, 235, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'AWS Cost Breakdown'
+          },
+          legend: {
+            display: true,
+            position: 'top'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

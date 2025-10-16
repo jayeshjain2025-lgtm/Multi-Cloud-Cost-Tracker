@@ -1,0 +1,79 @@
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f1720;
+  color: #e6eef6;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.landing-container {
+  text-align: center;
+}
+
+.cloud-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.cloud-card {
+  background: #1c2431;
+  border-radius: 10px;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+  width: 140px;
+  transition: transform 0.2s ease;
+}
+
+body {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(90deg, #2563eb, #1e3a8a);
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.metric {
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  width: fit-content;
+  box-shadow: 0 0 8px rgba(255,255,255,0.05);
+}
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
+
+canvas {
+  width: 80% !important;
+  max-width: 700px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.cloud-card:hover { transform: translateY(-4px); background: #223045; }
+.cloud-card img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
+.cloud-card.disabled { opacity: 0.4; pointer-events: none; }

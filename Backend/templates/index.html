@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Cloud Cost Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="landing">
+  <div class="landing-container">
+    <h1>Multi-Cloud Cost Tracker</h1>
+    <p>Select a cloud service to view its expenses</p>
+
+    <div class="cloud-grid">
+      <a href="{{ url_for('aws') }}" class="cloud-card">
+        <img src="{{ url_for('static', filename='assets/aws.png') }}" alt="AWS">
+        <span>AWS</span>
+      </a>
+      <a href="{{ url_for('azure') }}" class="cloud-card">
+        <img src="{{ url_for('static', filename='assets/azure.png') }}" alt="Azure">
+        <span>Azure</span>
+      </a>
+      <a href="#" class="cloud-card disabled">
+        <img src="{{ url_for('static', filename='assets/gcp.png') }}" alt="GCP">
+        <span>Coming Soon</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
